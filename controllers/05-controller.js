@@ -15,6 +15,17 @@ const utils = require("../utils");
 
 const ordenarPorEdad = () => {
   // Tu código aquí
+   // Verificar si no hay personajes en la base de datos
+   if (utils.personajes.length === 0) {
+    throw new Error("No se encontraron personajes");
+  }
+
+  // Ordenar los personajes por edad de mayor a menor
+  const personajesOrdenados = utils.personajes.sort((a, b) => b.edad - a.edad);
+
+  // Devolver el array de personajes ordenados por edad
+  return personajesOrdenados;
+
 };
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️

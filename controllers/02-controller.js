@@ -10,10 +10,15 @@ const utils = require("../utils");
   1) Puedes acceder a los personajes a través de *utils.personajes*.
   2) Recibirás la edad por parámetro.
 */
-
 const filtroPorEdad = (edad) => {
   // Tu código aquí
-};
+  const personajesFiltrados = utils.personajes.filter(personaje => personaje.edad <= edad);
 
+  if (personajesFiltrados.length === 0) {
+    throw new Error("No hay personajes igual o menores a la edad solicitada");
+  }
+
+  return personajesFiltrados;
+}
 // ⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = filtroPorEdad;

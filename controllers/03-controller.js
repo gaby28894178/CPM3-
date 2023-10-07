@@ -13,8 +13,28 @@ const utils = require("../utils");
 */
 
 const updatePersonaje = (personaje) => {
-  // Tu código aquí
+  // Buscar el personaje por ID
+  const personajeEncontrado = utils.personajes.find((p) => p.id === personaje.id);
+
+  // Si no se encuentra el personaje, arrojar un error
+  if (!personajeEncontrado) {
+    throw new Error("No se encontró el personaje solicitado");
+  }
+
+  // Verificar si alguna propiedad es undefined
+  if (personaje.nombre === undefined || personaje.numeroEpisodio === undefined || personaje.casa === undefined) {
+    throw new Error("Faltan datos a completar");
+  }
+
+  // Actualizar las propiedades del personaje
+  personajeEncontrado.nombre = personaje.nombre;
+  personajeEncontrado.numeroEpisodio = personaje.numeroEpisodio;
+  personajeEncontrado.casa = personaje.casa;
+
+  // Devolver el personaje actualizado
+  return personajeEncontrado;
 };
+
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = updatePersonaje;

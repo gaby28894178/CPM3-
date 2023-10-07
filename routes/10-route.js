@@ -15,10 +15,19 @@ const deletePersonaje = require("../controllers/04-controller");
   2) ¡Revisa en los test el status que deben tener tus respuestas!
   3) Revisa también los tests para saber por dónde vendrá el id del personaje que queremos eliminar
 */
-
 router.delete("/personaje", (req, res) => {
   // Tu código aquí
+  try {
+    const { id } = req.body; 
+    const resultado = deletePersonaje(id);
+
+    res.status(200).json({ message: `El personaje con el id ${id} fue eliminado de forma exitosa`});
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
+
+
 
 //⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = router;

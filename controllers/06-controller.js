@@ -14,7 +14,19 @@ const utils = require("../utils");
 */
 
 const mostrarLaEdadMedia = () => {
-  // Tu código aquí
+  const personajes = utils.personajes;
+
+  if (personajes.length === 0) {
+    throw new Error("No tenemos valores");
+  }
+
+  const sumaEdades = personajes.reduce((total, personaje) => total + personaje.edad, 0);
+  const edadMedia = sumaEdades / personajes.length;
+
+  // Utiliza Math.trunc para asegurarte de que la edad media sea un número entero
+  const edadMediaEntera = Math.trunc(edadMedia);
+
+  return edadMediaEntera;
 };
 
 //⚠️ No modificar nada debajo de esta línea ⚠️

@@ -16,6 +16,23 @@ const updatePersonaje = require("../controllers/03-controller");
 
 router.put("/personaje", (req, res) => {
   // Tu código aquí
+
+
+  try {
+    const { personaje } = req.body;
+    const resultado = updatePersonaje(personaje);
+
+    res.status(200).json({ message: "Personaje actualizado correctamente" });
+  } catch (error) {
+
+    res.status(400).json({ error: error.message });
+  }
 });
+
+
+
+
+
+
 //⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = router;

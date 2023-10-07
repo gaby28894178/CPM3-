@@ -15,8 +15,24 @@ const filtroPorEdad = require("../controllers/02-controller");
 */
 
 router.get("/personajes", (req, res) => {
-  // Tu código aquí
+
+  try {
+    const { edad } = req.body;
+
+    const personajesFiltrados = filtroPorEdad(edad);
+
+    res.status(200).json(personajesFiltrados);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
 });
+
+
+
+
+
+
+
 
 //⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = router;

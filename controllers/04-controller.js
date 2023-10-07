@@ -9,7 +9,21 @@ const utils = require("../utils");
 */
 
 const deletePersonaje = (personajeID) => {
-  // Tu código aquí
+  // Buscar el índice del personaje por ID
+ 
+  // Busca el índice del personaje en el array
+  const index = utils.personajes.findIndex((personaje) => personaje.id === personajeID);
+
+  // Si el índice es -1, significa que no se encontró el personaje
+  if (index === -1) {
+    throw new Error(`No existe el personaje con id: ${personajeID}`);
+  }
+
+  // Elimina el personaje del array
+  utils.personajes.splice(index, 1);
+
+  // Devuelve el array de personajes actualizado
+  return utils.personajes;
 };
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️

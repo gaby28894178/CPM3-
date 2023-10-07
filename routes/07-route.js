@@ -14,10 +14,20 @@ const addPersonaje = require("../controllers/01-controller");
   1) Recibirás los argumentos necesarios para ejecutar la función addPersonaje mediante la propiedad "body" de *req*.
   2) ¡Revisa en los test el status que deben tener tus respuestas!
 */
-
 router.post("/personaje", (req, res) => {
-  // Tu código aquí
-});
+  // Obtener los datos del cuerpo de la solicitud
+  
+  try {
+    const {personaje} = req.body;
+    
+    const data = addPersonaje(personaje);
 
+    
+    res.status(201).json({data});
+  } catch (error) {
+
+    res.status(400).json({ error: error.message });
+  }
+});
 //⚠️ No modificar nada debajo de esta línea ⚠️
 module.exports = router;

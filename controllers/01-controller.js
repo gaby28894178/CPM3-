@@ -21,8 +21,26 @@ const utils = require("../utils");
   5) Recuerda que dentro utils, puedes ver la estructura de la info y en examples hay ejemplos de como viene la data.
   */
 
+// const addPersonaje = (personaje) => {
+//   // Tu código aquí
+// };
+
+
+
 const addPersonaje = (personaje) => {
-  // Tu código aquí
+  // Verificar si el personaje ya existe
+  const existe = utils.personajes.some((p) => p.nombre === personaje.nombre);
+
+  // Si existe, lanzar un error
+  if (existe) {
+    throw new Error('Ya existe ese personaje');
+  }
+
+  // Si no existe, agregar el personaje a la lista
+  utils.personajes.push(personaje);
+
+  // Retornar la lista actualizada de personajes
+  return utils.personajes;
 };
 
 // ⚠️ No modificar nada debajo de esta línea ⚠️
